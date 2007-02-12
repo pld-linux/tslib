@@ -1,5 +1,5 @@
 Summary:	Abstraction layer for touchscreen panel event
-Summary(pl):	Warstwa abstrakcji dla zdarzeñ pochodz±cych z paneli dotykowych
+Summary(pl.UTF-8):   Warstwa abstrakcji dla zdarzeÅ„ pochodzÄ…cych z paneli dotykowych
 Name:		tslib
 Version:	1.0
 Release:	1
@@ -24,40 +24,40 @@ space interface to touchscreen functionality. It is supported by
 Kdrive (aka TinyX) and OPIE as well as being used on a number of
 commercial Linux devices including the Nokia 770.
 
-%description -l pl
-tslib to warstwa abstrakcji dla zdarzeñ pochodz±cych z paneli
-dotykowych, a tak¿e stos filtrów do przetwarzania tych zdarzeñ.
-Zosta³a stworzona przez Russela Kinga z projektu arm.linux.org.uk.
-Przyk³adowe zaimplementowane filtry obejmuj± wyg³adzanie drgañ i
-kalibracjê.
+%description -l pl.UTF-8
+tslib to warstwa abstrakcji dla zdarzeÅ„ pochodzÄ…cych z paneli
+dotykowych, a takÅ¼e stos filtrÃ³w do przetwarzania tych zdarzeÅ„.
+ZostaÅ‚a stworzona przez Russela Kinga z projektu arm.linux.org.uk.
+PrzykÅ‚adowe zaimplementowane filtry obejmujÄ… wygÅ‚adzanie drgaÅ„ i
+kalibracjÄ™.
 
-tslib jest czêsto u¿ywana w urz±dzeniach wbudowanych w celu
-zapewnienia wspólnego interfejsu przestrzeni u¿ytkownika dla
-ekranów dotykowych. Jest obs³ugiwana przez Kdrive (TinyX) i OPIE, a
-tak¿e przez wiele komercyjnych urz±dzeñ linuksowych, w tym Nokiê 770.
+tslib jest czÄ™sto uÅ¼ywana w urzÄ…dzeniach wbudowanych w celu
+zapewnienia wspÃ³lnego interfejsu przestrzeni uÅ¼ytkownika dla
+ekranÃ³w dotykowych. Jest obsÅ‚ugiwana przez Kdrive (TinyX) i OPIE, a
+takÅ¼e przez wiele komercyjnych urzÄ…dzeÅ„ linuksowych, w tym NokiÄ™ 770.
 
 %package devel
 Summary:	Header files for tslib library
-Summary(pl):	Pliki nag³ówkowe biblioteki tslib
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe biblioteki tslib
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files for tslib library.
 
-%description devel -l pl
-Pliki nag³ówkowe biblioteki tslib.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe biblioteki tslib.
 
 %package static
 Summary:	Static tslib library
-Summary(pl):	Statyczna biblioteka tslib
+Summary(pl.UTF-8):   Statyczna biblioteka tslib
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static tslib library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka tslib.
 
 %prep
