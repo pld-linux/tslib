@@ -1,5 +1,5 @@
 Summary:	Abstraction layer for touchscreen panel event
-Summary(pl.UTF-8):   Warstwa abstrakcji dla zdarzeń pochodzących z paneli dotykowych
+Summary(pl.UTF-8):	Warstwa abstrakcji dla zdarzeń pochodzących z paneli dotykowych
 Name:		tslib
 Version:	1.0
 Release:	1
@@ -38,7 +38,7 @@ także przez wiele komercyjnych urządzeń linuksowych, w tym Nokię 770.
 
 %package devel
 Summary:	Header files for tslib library
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki tslib
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki tslib
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -50,7 +50,7 @@ Pliki nagłówkowe biblioteki tslib.
 
 %package static
 Summary:	Static tslib library
-Summary(pl.UTF-8):   Statyczna biblioteka tslib
+Summary(pl.UTF-8):	Statyczna biblioteka tslib
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
