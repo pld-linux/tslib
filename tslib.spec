@@ -7,6 +7,7 @@ License:	LGPL
 Group:		Libraries
 Source0:	http://download.berlios.de/tslib/%{name}-%{version}.tar.bz2
 # Source0-md5:	92b2eb55b1e4ef7e2c0347069389390e
+Patch0:		%{name}-open.patch
 URL:		http://tslib.berlios.de/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
@@ -62,6 +63,7 @@ Statyczna biblioteka tslib.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__libtoolize}
@@ -92,6 +94,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog README
 %attr(755,root,root) %{_bindir}/ts_*
 %attr(755,root,root) %{_libdir}/libts-*.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libts-*.so.?
 %dir %{_libdir}/ts
 %attr(755,root,root) %{_libdir}/ts/*.so
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/ts.conf
