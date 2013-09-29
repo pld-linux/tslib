@@ -1,13 +1,12 @@
 Summary:	Abstraction layer for touchscreen panel event
 Summary(pl.UTF-8):	Warstwa abstrakcji dla zdarzeń pochodzących z paneli dotykowych
 Name:		tslib
-Version:	1.0
+Version:	1.1
 Release:	1
-License:	LGPL
+License:	LGPL v2
 Group:		Libraries
-Source0:	http://download.berlios.de/tslib/%{name}-%{version}.tar.bz2
-# Source0-md5:	92b2eb55b1e4ef7e2c0347069389390e
-Patch0:		%{name}-open.patch
+Source0:	https://github.com/kergoth/tslib/archive/%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	a34f20fe8576e558566c40cc94d14e56
 URL:		http://tslib.berlios.de/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
@@ -63,7 +62,6 @@ Statyczna biblioteka tslib.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__libtoolize}
@@ -81,7 +79,10 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm -f $RPM_BUILD_ROOT%{_libdir}/ts/*.{la,a}
+# dlopened modules
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/ts/*.{la,a}
+# obsoleted by pkg-config, but keep for now for other existing *.la
+#%{__rm} $RPM_BUILD_ROOT%{_libdir}/libts.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -92,9 +93,13 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README
-%attr(755,root,root) %{_bindir}/ts_*
-%attr(755,root,root) %{_libdir}/libts-*.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libts-*.so.?
+%attr(755,root,root) %{_bindir}/ts_calibrate
+%attr(755,root,root) %{_bindir}/ts_harvest
+%attr(755,root,root) %{_bindir}/ts_print
+%attr(755,root,root) %{_bindir}/ts_print_raw
+%attr(755,root,root) %{_bindir}/ts_test
+%attr(755,root,root) %{_libdir}/libts-1.0.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libts-1.0.so.0
 %dir %{_libdir}/ts
 %attr(755,root,root) %{_libdir}/ts/*.so
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/ts.conf
@@ -104,7 +109,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libts.so
 %{_libdir}/libts.la
 %{_includedir}/tslib.h
-%{_pkgconfigdir}/tslib-*.pc
+%{_pkgconfigdir}/tslib.pc
+%{_pkgconfigdir}/tslib-1.0.pc
 
 %files static
 %defattr(644,root,root,755)
