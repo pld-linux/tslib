@@ -2,7 +2,7 @@ Summary:	Abstraction layer for touchscreen panel event
 Summary(pl.UTF-8):	Warstwa abstrakcji dla zdarzeń pochodzących z paneli dotykowych
 Name:		tslib
 Version:	1.1
-Release:	1
+Release:	2
 License:	LGPL v2
 Group:		Libraries
 Source0:	https://github.com/kergoth/tslib/archive/%{version}/%{name}-%{version}.tar.gz
