@@ -1,16 +1,19 @@
 Summary:	Abstraction layer for touchscreen panel event
 Summary(pl.UTF-8):	Warstwa abstrakcji dla zdarzeń pochodzących z paneli dotykowych
 Name:		tslib
-Version:	1.1
-Release:	2
+Version:	1.14
+Release:	1
 License:	LGPL v2
 Group:		Libraries
-Source0:	https://github.com/kergoth/tslib/archive/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	a34f20fe8576e558566c40cc94d14e56
-URL:		http://tslib.berlios.de/
+#Source0Download: https://github.com/kergoth/tslib/releases
+Source0:	https://github.com/kergoth/tslib/releases/download/%{version}/%{name}-%{version}.tar.xz
+# Source0-md5:	8f1417989a1d9b97c687bddc35a33e73
+URL:		http://www.tslib.org/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
 BuildRequires:	libtool >= 2:1.5
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -70,6 +73,7 @@ Statyczna biblioteka tslib.
 %{__autoheader}
 %{__automake}
 %configure \
+	--disable-silent-rules \
 	--enable-static
 %{__make}
 
@@ -94,15 +98,31 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README
 %attr(755,root,root) %{_bindir}/ts_calibrate
+%attr(755,root,root) %{_bindir}/ts_finddev
 %attr(755,root,root) %{_bindir}/ts_harvest
 %attr(755,root,root) %{_bindir}/ts_print
+%attr(755,root,root) %{_bindir}/ts_print_mt
 %attr(755,root,root) %{_bindir}/ts_print_raw
 %attr(755,root,root) %{_bindir}/ts_test
-%attr(755,root,root) %{_libdir}/libts-1.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libts-1.0.so.0
+%attr(755,root,root) %{_bindir}/ts_test_mt
+%attr(755,root,root) %{_bindir}/ts_uinput
+%attr(755,root,root) %{_bindir}/ts_verify
+%attr(755,root,root) %{_libdir}/libts.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libts.so.0
 %dir %{_libdir}/ts
 %attr(755,root,root) %{_libdir}/ts/*.so
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/ts.conf
+%{_mandir}/man1/ts_calibrate.1*
+%{_mandir}/man1/ts_finddev.1*
+%{_mandir}/man1/ts_harvest.1*
+%{_mandir}/man1/ts_print.1*
+%{_mandir}/man1/ts_print_mt.1*
+%{_mandir}/man1/ts_print_raw.1*
+%{_mandir}/man1/ts_test.1*
+%{_mandir}/man1/ts_test_mt.1*
+%{_mandir}/man1/ts_uinput.1*
+%{_mandir}/man1/ts_verify.1*
+%{_mandir}/man5/ts.conf.5*
 
 %files devel
 %defattr(644,root,root,755)
@@ -110,7 +130,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libts.la
 %{_includedir}/tslib.h
 %{_pkgconfigdir}/tslib.pc
-%{_pkgconfigdir}/tslib-1.0.pc
+%{_mandir}/man3/ts_*.3*
 
 %files static
 %defattr(644,root,root,755)
